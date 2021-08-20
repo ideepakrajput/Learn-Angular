@@ -1,0 +1,118 @@
+<h1>FormArray</h1>
+<div class="container">
+    <div class="row">
+        <div class="form-bg">
+            <form [formGroup]='register' (ngSubmit)="onSubmit()">
+                <h2 class="text-center">Registration FormArray</h2><br>
+                <div formArrayName="ContactNos">
+                    <div class="form-group">
+                        <!-- <input type="text" class="form-control" placeholder="firstname" formControlName='fname'
+                            name="firstname" required>
+                        <br>
+                        <input type="text" class="form-control" placeholder="lastname" formControlName='lname'
+                            name="lastname" required>
+                        <br>
+                        <input type="email" class="form-control" placeholder="Email" formControlName='email'
+                            name="email" required> -->
+
+                        <div *ngFor="let contact of register.controls.ContactNos.controls, index as i">
+                            <input type="text" [formControlName]="i" placeholder="Contact No." class="form-control">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-default btn-success m-1 ">Register</button>
+                            <button type="submit" (click)="addContact()" class="btn btn-warning btn-success m-1 ">Add
+                                Contact
+                                No</button>
+                            <button type="submit" (click)="addPreset()" class="btn btn-default btn-primary m-1 ">Set
+                                Preset</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- <h1>Add new rows dynamically</h1>
+<form novalidate [formGroup]="newRow">
+    <div class="row">
+        <div class="col-xs-12 form-group marL40">
+            <div style="margin-top: 10px;" formGroupName="itemRows">
+                <div class="row panel-heading text-bold"
+                    style="text-align: center;margin-bottom: 10px; margin-left: 10px;">Form Details</div>
+            </div>
+            <ng-container *ngIf="newRow.controls.itemRows!=null">
+                <div *ngFor="let itemRow of newRow.controls.itemRows.controls;let j=index" [formGroupName]="j">
+                    <div class="row">
+                        <div class="col-md-2 form-group">
+                            <input matInput placeholder="Name" formControlName="Name">
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <input matInput placeholder="Class" formControlName="Class">
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <input matInput placeholder="RollNo" formControlName="RollNo">
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <input matInput placeholder="MobileNo" formControlName="MobileNo">
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <button (click)="deleteRow(j)" class="btn btn-danger">X</button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="form-group" style="text-align: right;">
+                <div type="button" (click)="addNewRow()" class="btn btn-primary">
+                    Add more row
+                </div>
+            </div>
+        </div>
+    </div>
+</form> -->
+
+<!-- Radio and Checkbox -->
+<h2>Radio Button and Checkbox</h2>
+<form #userform="ngForm" (ngSubmit)="onFormSubmit(userform)">
+    <table>
+        <tr>
+            <td>Name : </td>
+            <td>
+                <input type="text" name="uname" [ngModel]="user.username" required #uname="ngModel">
+                <div *ngIf="uname.invalid">Name required</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Gender : </td>
+            <td>
+                <input type="radio" name="gender" value="Male" [ngModel]="user.gender" required #gender="ngModel">Male
+                <input type="radio" name="gender" value="Female" [ngModel]="user.gender" required
+                    #gender="ngModel">Female
+                <input type="radio" name="gender" value="Other" [ngModel]="user.gender" required #gender="ngModel">Other
+                <div *ngIf="gender.invalid"> Gender required</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Are you married : </td>
+            <td>
+                <input type="checkbox" name="married" [ngModel]="user.ismarried">
+
+            </td>
+        </tr>
+        <tr>
+            <td>Accept Term and Conditons : </td>
+            <td>
+                <input type="checkbox" name="tc" [ngModel]="user.isTCAccepted" required #tc="ngModel">
+                <div *ngIf="tc.invalid">Accept T & C</div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button>Submit</button>
+                <button type="button" (click)="setDefaultValue()">Set Default</button>
+                <button type="reset">Reset</button>
+            </td>
+        </tr>
+    </table>
+</form>

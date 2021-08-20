@@ -1,0 +1,31 @@
+<h1>Reactive Forms</h1>
+<div class="container">
+    <h2 class="text-center">Registration Form</h2>
+    <!-- For post the form and get the value by formcontrol, save the this click method in form ::--::(ngSubmit)="PostData(signupform)" and also uncomment the code for get value by form control in ts file -->
+    <form [formGroup]='signupform'>
+        <div class="form-group">
+            <input class="form-control m-2" type="text" formControlName='fname' placeholder="Enter first name">
+            <input class="form-control m-2" type="text" formControlName='lname' placeholder="Enter last name">
+            <input class="form-control m-2" type="text" formControlName='email' placeholder="Enter eamil">
+            <input class="form-control m-2" type="password" formControlName='pass' placeholder="Enter password">
+        </div>
+
+        <!-- Submit Data -->
+        <div class="form-group">
+            <button class="form-control m-2" type="button" class="btn btn-primary" (click)="Submit()"
+                [disabled]='!signupform.valid'>Register</button>
+
+            <!-- Reset Data -->
+            <button class="form-control m-2" type="button" class="btn btn-danger" (click)="Reset()">Reset</button>
+
+            <!-- Fill Data --  use of stvalue -->
+            <button class="form-control m-4" type="button" class="btn btn-success" (click)="FillData()">FillData by
+                setValue</button>
+
+            <!-- Fill Data --  use of patch value -->
+            <button class="form-control ml-4" type="button" class="btn btn-success" (click)="FillData1()">FillData by
+                patchValue</button>
+        </div>
+
+    </form>
+</div>

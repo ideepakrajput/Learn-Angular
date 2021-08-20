@@ -1,0 +1,75 @@
+<h1>Iteration and Loops</h1>
+<h2>Using *ngIf / *ngElse</h2>
+<input type="radio" name="radio1" id="" (click)="changevalue(true)" />True
+<input type="radio" name="radio1" id="" (click)="changevalue(false)" />False
+<div *ngIf="isvalid; else elseblock">This is *ngIf true</div>
+<!--   For *ngIf
+    <div *ngIf="!isvalid">
+    This is *ngIf false
+</div>
+-->
+<ng-template #elseblock>
+    <div>this is ngElse</div>
+</ng-template>
+
+
+<h2>*ngSwith</h2>
+<select (change)="setvalue($event)">
+    <option value="">Select</option>
+    <option value="one">one</option>
+    <option value="two">two</option>
+    <option value="three">three</option>
+    <option value="another">another</option>
+</select>
+<div [ngSwitch]="choose">
+    <h3 *ngSwitchCase="'one'">First</h3>
+    <h3 *ngSwitchCase="'two'">Second</h3>
+    <h3 *ngSwitchCase="'three'">Third</h3>
+    <h3 *ngSwitchDefault>Default</h3>
+</div>
+
+<h2>ngFor</h2>
+<h3>index start from 0</h3>
+<ul>
+
+    <li *ngFor="let student of Students; let i = index ; let f = first ; let l = last let o = odd ; let e = even">
+        {{i+1}} : {{student.name}} : first - {{f}} : last - {{l}} : odd - {{o}} : even - {{e}}
+    </li>
+
+</ul>
+
+<h2>Track by *ngFor </h2>
+<table border="2" style="border-collapse: collapse;">
+    <tr>
+        <td>Sl No.</td>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Gender</td>
+        <td>Age</td>
+        <td>Course</td>
+    </tr>
+    <tr *ngFor="let s of Student ; let i = index ;trackBy: trackbyStudentId">
+        <td>{{i+1}}</td>
+        <td>{{s.studentId}}</td>
+        <td>{{s.name}}</td>
+        <td>{{s.gender}}</td>
+        <td>{{s.age}}</td>
+        <td>{{s.course}}</td>
+    </tr>
+</table>
+<br>
+<button (click)="getmorestudent()">Get more Students</button>
+<br><br>
+<h2>Groping with ngFor</h2>
+<ul *ngFor="let group of countrydetails">
+    <li>{{group.country}}</li>
+    <ul>
+        <li *ngFor="let person of group.people">
+            {{person.name}}
+        </li>
+    </ul>
+</ul>
+
+<!-- In this component --- : ngClass , ngStyle , One-way Data Binding , Two-way Data Binding -->
+
+<!-- <app-employee></app-employee> -->

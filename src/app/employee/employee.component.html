@@ -1,0 +1,52 @@
+<h1>ngClass, ngStyle, Data Binding</h1>
+<h2>ngStyle</h2>
+<ul *ngFor="let person of people">
+    <li [ngStyle]="{'color': getcolor(person.country)}">{{person.name}} :- {{person.country}}
+    </li>
+</ul>
+
+<h2>ngClass</h2>
+<p [ngClass]="'one two'">Using ngClass with String</p>
+<div *ngFor="let user of users" [ngClass]="'three four'">{{user}}</div>
+
+<h2>OneWay-Data Binding : Interpolation</h2>
+<h3>Employee Name : {{empfirstname}} {{emplastname}}</h3>
+<h3>Employee Name : {{empfirstname + " "+ emplastname}}</h3>
+<h3>{{a+b}}</h3>
+
+<h2>OneWay-Data Binding : Property Binding</h2>
+<span [innerHTML]="empfirstname +' '+ emplastname"></span>
+<img [src]="'../favicon.ico'">
+
+<h2>OneWay-Data Binding : Attribute Binding</h2>
+<table [attr.border]="bdr" [attr.width]="wd" [attr.height]="ht">
+    <tr>
+        <td [attr.colspan]="cols">Student's Details</td>
+        <!-- <td></td>
+            <td></td> -->
+    </tr>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Class</td>
+    </tr>
+    <tr>
+        <td>001</td>
+        <td>Deepak</td>
+        <td>Graduation</td>
+    </tr>
+</table>
+
+
+<h2>OneWay-Data Binding : Event Binding</h2>
+<button (click)="onclick()">Click me</button>
+
+<h2>TwoWay-Data Binding : without ngModel</h2>
+<!-- Enter Your Name : <input [value]='data1' (input)='data1=$event.target.value'> -->
+Your Name : {{data1}}
+
+<h2>TwoWay-Data Binding : ngModel</h2>
+Enter Your Name : <input [(ngModel)]="data2">
+Your Name : {{data2}}
+
+<!-- <app-pipe></app-pipe> -->

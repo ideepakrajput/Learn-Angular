@@ -1,0 +1,23 @@
+<h1>ngForm</h1>
+<div class="container">
+    <div class="row">
+        <div class="form-bg">
+            <form #regform='ngForm' (ngSubmit)="Register(regform)">
+                <h2 class="text-center">Registration Form</h2><br>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="firstname" name="firstname" required ngModel>
+                    <br>
+                    <input type="text" class="form-control" placeholder="lastname" name="lastname" required ngModel>
+                    <br>
+                    <input type="email" class="form-control" placeholder="Email" name="email" required ngModel
+                        #email="ngModel">
+                    <span class="text-danger" *ngIf="email.touched && !email.valid">Please enter valid email</span>
+                </div>
+                <div class="align-center">
+                    <button type="submit" class="btn btn-default btn-success"
+                        [disabled]="!regform.valid">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

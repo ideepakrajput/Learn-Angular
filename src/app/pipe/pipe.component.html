@@ -1,0 +1,85 @@
+<h1>Pipe</h1>
+<h2>Pipe : Built-in Pipe</h2>
+<table border="1">
+    <tr>
+        <th>Employee Code</th>
+        <th>Employee Name</th>
+        <th>Salary</th>
+        <th>DOB</th>
+    </tr>
+    <!-- <tr *ngFor="let employee of employees">
+        <td>{{employee.code}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.salary}}</td>
+        <td>{{employee.dob}}</td>
+    </tr> -->
+    <tr *ngFor="let employee of employees">
+        <td>{{employee.code}}</td>
+        <td>{{employee.name | uppercase}}</td>
+        <td>{{employee.salary}}</td>
+        <td>{{employee.dob}}</td>
+    </tr>
+</table>
+<h2>Pipe : Parametrized Pipe</h2>
+<div>{{DOB}}
+    <br>Medium : {{DOB | date :'medium'}}
+    <br>Specific Format: {{DOB | date :'dd/MM/yyyy'}}
+    <br>Medim Time: {{DOB | date :'mediumTime'}}
+    <br>Salary: {{salaryD | currency :'USD':true}}
+</div>
+
+<h2>Pipe : Chaining Pipe</h2>
+<div>
+    Medium : {{DOB | date :'medium' |lowercase}}
+    <br>FullDate : {{DOB | date:'fullDate' | uppercase}}
+</div>
+
+<h2>Pipe : Pipes with String</h2>
+<h3>
+    {{name|uppercase}} - {{position|lowercase}} - {{work|titlecase}}
+</h3>
+<h2>Slice</h2>
+<h3>work|slice:5 -- {{work|slice:5}}</h3> <!-- Start from index 5 -->
+<h3>work|slice:5:8 -- {{work|slice:5:8}}</h3> <!-- Text from index 5 and till 8 -->
+
+<h2>Pipe : Date / Percent / Decimal / Currency</h2>
+<h3>
+    CurrentDate -- {{currentDate}}
+    <br>currentDate|date:'shortDate' -- {{currentDate|date:'shortDate'}}
+    <br>currentDate|date:'longDate' -- {{currentDate|date:'longDate'}}
+    <br>currentDate|date:'fullDate' -- {{currentDate|date:'fullDate'}}
+
+    <br>
+    <br>mynumber -- {{mynumber}}
+    <br>mynumber|percent -- {{mynumber|percent}}
+    <br>mynumber|percent:'2.4-8' -- {{mynumber|percent:'2.4-8'}}
+
+    <br>
+    <br>mynumber -- {{mynumber}}
+    <br>mynumber|number -- {{mynumber|number}}
+    <br>mynumber|number:'2.4-8' -- {{mynumber|number:'2.4-8'}}
+
+    <br>
+    <br>mynumber -- {{mynumber}}
+    <br>mynumber|currency -- {{mynumber|currency}}
+    <br>mynumber|currency:'INR':'code' -- {{mynumber|currency:'INR':'code'}}
+</h3>
+
+<h2>Pipe : json Pipe</h2>
+<h3>
+    employee_j|json -- {{employee_j|json}}
+</h3>
+<h3>
+    employee_j|slice:1:3|json -- {{employee_j|slice:1:3|json}}
+</h3>
+
+<h2>Pipe : Custom Pipe</h2>
+<h3>Here we create a pipe by command "ng g pipe (pipename) --float "</h3>
+<table border="1">
+    <tr *ngFor="let student of Students">
+        <td>{{student.code}}</td>
+        <td>{{student.name|mypipe:student.gender}}</td>
+        <td>{{student.gender}}</td>
+        <td>{{student.salary}}</td>
+    </tr>
+</table>
